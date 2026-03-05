@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Benim Sitem</title>
+</head>
+<body>
+</body>
+</html> 
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Gece Karaf</title>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600;700&display=swap" rel="stylesheet">
+
+<style>
+*{margin:0;padding:0;box-sizing:border-box;font-family:'Montserrat',sans-serif}
+body{background:#0b0f2c;color:white}
+
+header{display:flex;justify-content:space-between;align-items:center;padding:18px 60px;background:#0b0f2c;position:sticky;top:0;z-index:1000;border-bottom:1px solid rgba(255,255,255,0.08)}
+
+.logo img{height:60px}
+
+nav ul{display:flex;list-style:none;gap:30px}
+nav a{color:white;font-weight:600}
+nav a:hover{color:#7f8cff}
+
+.cart-btn{background:#5c6bc0;padding:10px 18px;border-radius:25px;border:none;color:white;cursor:pointer}
+
+.hero{text-align:center;padding:120px 20px;background:linear-gradient(140deg,#0b0f2c,#1a2060)}
+.hero h1{font-size:3rem;margin-bottom:20px}
+.hero p{color:#c9c9e8;margin-bottom:30px}
+.hero button{padding:14px 35px;border-radius:40px;border:none;background:#5c6bc0;color:white;font-weight:600;cursor:pointer}
+
+.section-title{text-align:center;font-size:2.2rem;margin:70px 0 20px}
+
+.products{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:35px;padding:40px 70px}
+
+.product-card{background:white;color:black;padding:20px;border-radius:16px;text-align:center;transition:0.3s}
+.product-card:hover{transform:translateY(-8px);box-shadow:0 15px 35px rgba(0,0,0,0.25)}
+
+.product-card img{width:100%;height:230px;object-fit:cover;border-radius:10px;margin-bottom:15px}
+.product-card h3{margin-bottom:10px}
+.product-card p{font-weight:600;margin-bottom:15px}
+.product-card button{background:#5c6bc0;border:none;padding:10px 22px;color:white;border-radius:25px;cursor:pointer}
+
+.about{max-width:900px;margin:auto;text-align:center;line-height:1.8;color:#d6d8ff;padding:70px 20px}
+
+.contact{background:#13185a;padding:70px 20px;text-align:center}
+.contact p{margin:10px 0;color:#dcdcff}
+
+.cart-panel{position:fixed;right:-400px;top:0;height:100%;width:350px;background:white;color:black;padding:25px;transition:0.4s;overflow:auto}
+.cart-panel.active{right:0}
+
+.cart-item{display:flex;justify-content:space-between;margin-bottom:15px;border-bottom:1px solid #ddd;padding-bottom:10px}
+
+.checkout{margin-top:20px;width:100%;padding:12px;border:none;background:#5c6bc0;color:white;border-radius:25px;cursor:pointer}
+
+footer{padding:30px;text-align:center;color:#aaa}
+
+@media(max-width:768px){header{flex-direction:column;gap:15px}nav ul{flex-direction:column;align-items:center}.products{padding:30px}.hero h1{font-size:2.2rem}}
+</style>
+</head>
+
+<body>
+
+<header>
+
+<div class="logo">
+<!-- LOGO DOSYASINI AYNI KLASÖRE logo.png İSMİYLE KOY -->
+<img src="logo.png" alt="Gece Karaf Logo">
+</div>
+
+<nav>
+<ul>
+<li><a href="#">Ana Sayfa</a></li>
+<li><a href="#urunler">Ürünler</a></li>
+<li><a href="#hakkinda">Hakkımızda</a></li>
+<li><a href="#iletisim">İletişim</a></li>
+</ul>
+</nav>
+
+<button class="cart-btn" onclick="toggleCart()">Sepet (<span id="cartCount">0</span>)</button>
+
+</header>
+
+<section class="hero">
+<h1>Gece Karaf Koleksiyonu</h1>
+<p>Modern sofralar için premium karaf ve dekanter koleksiyonu</p>
+<button onclick="scrollToProducts()">Ürünleri Gör</button>
+</section>
+
+<h2 id="urunler" class="section-title">Karaf Ürünleri</h2>
+
+<section class="products">
+
+<!-- 20+ ÜRÜN -->
+
+<div class="product-card">
+<img src="https://source.unsplash.com/600x600/?wine-decanter" alt="karaf">
+<h3>Premium Şarap Karafı</h3>
+<p>₺690</p>
+<button onclick="addCart('Premium Şarap Karafı',690)">Sepete Ekle</button>
+</div>
+
+<div class="product-card">
+<img src="https://source.unsplash.com/600x600/?glass-decanter" alt="karaf">
+<h3>Klasik Cam Karaf</h3>
+<p>₺420</p>
+<button onclick="addCart('Klasik Cam Karaf',420)">Sepete Ekle</button>
+</div>
+
+<div class="product-card">
+<img src="https://source.unsplash.com/600x600/?wine-carafe" alt="karaf">
+<h3>Modern Dekanter</h3>
+<p>₺550</p>
+<button onclick="addCart('Modern Dekanter',550)">Sepete Ekle</button>
+</div>
+
+<div class="product-card">
+<img src="https://source.unsplash.com/600x600/?glass-carafe" alt="karaf">
+<h3>Minimal Karaf</h3>
+<p>₺380</p>
+<button onclick="addCart('Minimal Karaf',380)">Sepete Ekle</button>
+</div>
+
+<div class="product-card">
+<img src="https://source.unsplash.com/600x600/?decanter" alt="karaf">
+<h3>Kristal Dekanter</h3>
+<p>₺750</p>
+<button onclick="addCart('Kristal Dekanter',750)">Sepete Ekle</button>
+</div>
+
+<div class="product-card">
+<img src="https://source.unsplash.com/600x600/?wine-pitcher" alt="karaf">
+<h3>Şık Cam Karaf</h3>
+<p>₺460</p>
+<button onclick="addCart('Şık Cam Karaf',460)">Sepete Ekle</button>
+</div>
+
+<div class="product-card">
+<img src="https://source.unsplash.com/600x600/?crystal-decanter" alt="karaf">
+<h3>Kristal Şarap Karafı</h3>
+<p>₺820</p>
+<button onclick="addCart('Kristal Şarap Karafı',820)">Sepete Ekle</button>
+</div>
+
+<div class="product-card">
+<img src="https://source.unsplash.com/600x600/?wine-glass-decanter" alt="karaf">
+<h3>Modern Cam Dekanter</h3>
+<p>₺510</p>
+<button onclick="addCart('Modern Cam Dekanter',510)">Sepete Ekle</button>
+</div>
+
+<div class="product-card">
+<img src="https://source.unsplash.com/600x600/?carafe" alt="karaf">
+<h3>Minimal Şarap Karafı</h3>
+<p>₺370</p>
+<button onclick="addCart('Minimal Şarap Karafı',370)">Sepete Ekle</button>
+</div>
+
+<div class="product-card">
+<img src="https://source.unsplash.com/600x600/?wine-bottle-decanter" alt="karaf">
+<h3>Premium Dekanter Pro</h3>
+<p>₺920</p>
+<button onclick="addCart('Premium Dekanter Pro',920)">Sepete Ekle</button>
+</div>
+
+</section>
+
+<h2 id="hakkinda" class="section-title">Hakkımızda</h2>
+
+<section class="about">
+<p>
+Gece Karaf, Balıkesir'in Edremit ilçesinde bulunan fiziksel bir işletmenin online mağazasıdır. Yıllardır cam ürünler ve karaf tasarımları üzerine hizmet veriyoruz.
+</p>
+
+<p>
+Amacımız sofralara estetik katan kaliteli karaf ve dekanter ürünlerini müşterilerimize güvenli alışveriş deneyimi ile sunmaktır. Fiziksel mağazamızda ürünleri yakından inceleyebilir veya web sitemiz üzerinden sipariş verebilirsiniz.
+</p>
+
+<p>
+Modern tasarım anlayışı ve kaliteli cam ürünleriyle Gece Karaf olarak sofralara şıklık katmayı hedefliyoruz.
+</p>
+</section>
+
+<h2 id="iletisim" class="section-title">İletişim</h2>
+
+<section class="contact">
+<p><strong>E-Mail:</strong> berathascelik2017@gmail.com</p>
+<p><strong>Telefon:</strong> 0534 242 60 39</p>
+<p>Edremit / Balıkesir</p>
+</section>
+
+<footer>
+<p>© 2026 Gece Karaf</p>
+</footer>
+
+<div class="cart-panel" id="cartPanel">
+<h2>Sepet</h2>
+<div id="cartItems"></div>
+<button class="checkout" onclick="checkout()">Ödeme Yap</button>
+</div>
+
+<script>
+
+let cart=[]
+
+function scrollToProducts(){
+document.getElementById("urunler").scrollIntoView({behavior:"smooth"})
+}
+
+function addCart(name,price){
+cart.push({name,price})
+updateCart()
+}
+
+function updateCart(){
+
+document.getElementById("cartCount").innerText=cart.length
+
+let cartItems=document.getElementById("cartItems")
+cartItems.innerHTML=""
+
+cart.forEach(item=>{
+let div=document.createElement("div")
+div.className="cart-item"
+div.innerHTML=`<span>${item.name}</span><span>₺${item.price}</span>`
+cartItems.appendChild(div)
+})
+
+}
+
+function toggleCart(){
+document.getElementById("cartPanel").classList.toggle("active")
+}
+
+function checkout(){
+if(cart.length===0){
+alert("Sepetiniz boş")
+return
+}
+alert("Gerçek ödeme sistemi için Stripe / iyzico entegrasyonu gerekir.")
+}
+
+</script>
+
+</body>
+</html>
